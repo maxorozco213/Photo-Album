@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View} from 'react-native';
-import { StackNavigator } from "react-navigation";
+import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
 import Screen1 from './src/Screen1';
 

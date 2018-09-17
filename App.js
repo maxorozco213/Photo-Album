@@ -10,9 +10,6 @@ const AppNavigator = StackNavigator({
 
 const App = () =>
   <View style={styles.container}>
-    <Text>
-      hi
-    </Text>
     <AppNavigator />
   </View>;
 
