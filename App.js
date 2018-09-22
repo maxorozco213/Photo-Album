@@ -1,29 +1,27 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 import Screen1 from './Router';
 
-const AppNavigator = StackNavigator({
-  Screen1: { screen: Screen1 }
+constructor(props) {
+
+  this.state
+}
+
+const Appnavigator = StackNavigator({
+  Screen1: { screen: Screen1 },
 });
 
 const App = () =>
-  <View style={styles.container}>
-    <AppNavigator />
+  <View style={{ flex: 1, backgroundColor: 'black' }}>
+    <Appnavigator />
   </View>;
 
-
-export default class photoAlbum extends Component {
+export default class photoalbum extends React.Component {
   render() {
     return (
       <App />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    color: 'white'
-  }
-});

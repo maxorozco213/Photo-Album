@@ -4,7 +4,7 @@ import { StackNavigator } from 'react-navigation';
 
 import Screen1 from './src/Screen1';
 
-const navStack = StackNavigator({
+const NavStack = StackNavigator({
   Screen1: { screen: Screen1 }
 });
 
@@ -13,7 +13,7 @@ class Router extends Component {
   render() {
     const screenProps = this.props;
     return (
-      <navStack screenProps={screenProps} />
+      <NavStack screenProps={screenProps} />
     );
   }
 }
