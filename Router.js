@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+// import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
-import Screen1 from './src/Screen1';
+import MainMenu from './src/MainMenu';
+import Canvas from './src/Canvas';
+import ProjectGallery from './src/ProjectGallery';
 
 const NavStack = StackNavigator({
-  Screen1: { screen: Screen1 }
+  MainMenu: { screen: MainMenu }
 });
 
 class Router extends Component {

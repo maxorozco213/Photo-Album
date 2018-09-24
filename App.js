@@ -1,16 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-
-import Screen1 from './Router';
-
-constructor(props) {
-
-  this.state
-}
+import MainMenu from './Router';
 
 const Appnavigator = StackNavigator({
-  Screen1: { screen: Screen1 },
+  MainMenu: { screen: MainMenu },
 });
 
 const App = () =>
