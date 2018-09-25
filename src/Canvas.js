@@ -1,14 +1,18 @@
+// Page on which the user will create projects
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-export default class Screen1 extends React.Component {
-  constructor(props) {
-    super(props);
-      this.state = {
-        isLoading: true,
-        clonedList: [],
-      };
-  }
+export default class Canvas extends React.Component {
+  //eslint-disable-next-line
+  static navigationOptions = ({ navigation, screenProps, props }) => {
+    return {
+     headerTintColor: 'white',
+     title: 'Canvas',
+     headerStyle: { backgroundColor: 'white' },
+     headerTitleStyle: { color: 'black' },
+     headerSize: { height: 40 } // ??????????
+    };
+  };
 
   render() {
     return (
@@ -92,8 +96,6 @@ const styles = StyleSheet.create({
 
   imageStyle: {
     flex: 0,
-    // borderWidth: 0.5,
-    // borderColor: 'black',
     resizeMode: 'contain',
     width: 60,
     height: 45
