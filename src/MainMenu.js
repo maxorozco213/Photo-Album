@@ -9,7 +9,6 @@ export default class MainMenu extends React.Component {
      title: 'Main Menu',
      headerStyle: { backgroundColor: 'white' },
      headerTitleStyle: { color: 'black' },
-     headerSize: { height: 40 } // ??????????
     };
   };
 
@@ -18,27 +17,27 @@ export default class MainMenu extends React.Component {
       buttonText,
       buttonStyle,
       container,
-      mainText,
-      subText
     } = styles;
 
       return (
         <View style={container}>
-          {/* <Text style={mainText}>
-            Main menu
-          </Text> */}
+          {/* <Image
+            source={'../images/logo.png'}
+          /> */}
 
-          {/* <Text style={subText}>
-            Choose an option
-          </Text> */}
-
-          <TouchableOpacity style={buttonStyle}>
+          <TouchableOpacity
+            style={buttonStyle}
+            onPress={() => this.props.navigation.navigate('Canvas')}
+          >
             <Text style={buttonText}>
-              Create a Project
+              {'    '}Create a Project{'    '}
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={buttonStyle}>
+          <TouchableOpacity
+            style={buttonStyle}
+            onPress={() => console.log('Not yet implemeted')}
+          >
             <Text style={buttonText}>
               View Saved Projects
             </Text>

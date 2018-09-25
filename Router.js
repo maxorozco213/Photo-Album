@@ -7,7 +7,9 @@ import Canvas from './src/Canvas';
 import ProjectGallery from './src/ProjectGallery';
 
 const NavStack = StackNavigator({
-  MainMenu: { screen: MainMenu }
+  MainMenu: { screen: MainMenu },
+  Canvas: { screen: Canvas },
+  // ProjectGallery: { screen: ProjectGallery }
 });
 
 class Router extends Component {

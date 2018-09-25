@@ -6,11 +6,10 @@ export default class Canvas extends React.Component {
   //eslint-disable-next-line
   static navigationOptions = ({ navigation, screenProps, props }) => {
     return {
-     headerTintColor: 'white',
+     headerTintColor: 'black',
      title: 'Canvas',
      headerStyle: { backgroundColor: 'white' },
      headerTitleStyle: { color: 'black' },
-     headerSize: { height: 40 } // ??????????
     };
   };
 
@@ -92,6 +91,9 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: 'black',
     alignItems: 'center',
+    shadowOpacity: 0.1,
+    elevation: 1,
+    shadowRadius: 10
   },
 
   imageStyle: {
