@@ -2,6 +2,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
+import Draggable from 'react-native-draggable';
+
 export default class Canvas extends React.Component {
   //eslint-disable-next-line
   static navigationOptions = ({ navigation, screenProps, props }) => {

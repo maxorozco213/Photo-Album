@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 // import { AppRegistry, StyleSheet, Text, View } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 
 import MainMenu from './src/MainMenu';
 import Canvas from './src/Canvas';
 import ProjectGallery from './src/ProjectGallery';
 
-const NavStack = StackNavigator({
+const NavStack = createStackNavigator({
   MainMenu: { screen: MainMenu },
   Canvas: { screen: Canvas },
-  // ProjectGallery: { screen: ProjectGallery }
+  ProjectGallery: { screen: ProjectGallery }
 });
 
 class Router extends Component {

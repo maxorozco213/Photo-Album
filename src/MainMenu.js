@@ -36,7 +36,7 @@ export default class MainMenu extends React.Component {
 
           <TouchableOpacity
             style={buttonStyle}
-            onPress={() => console.log('Not yet implemeted')}
+            onPress={() => this.props.navigation.navigate('ProjectGallery')}
           >
             <Text style={buttonText}>
               View Saved Projects
