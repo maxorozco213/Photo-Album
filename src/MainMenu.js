@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 export default class MainMenu extends React.Component {
-  static navigationOptions = ({ navigation, screenProps, props }) => {
+  static navigationOptions = ({ navigation, props }) => {
     return {
      headerTintColor: 'white',
      title: 'Main Menu',
@@ -19,18 +19,17 @@ export default class MainMenu extends React.Component {
       buttonStyle,
       container,
       mainText,
-      subText
+      subText,
+      logoStyle
     } = styles;
 
       return (
         <View style={container}>
-          {/* <Text style={mainText}>
-            Main menu
-          </Text> */}
-
-          {/* <Text style={subText}>
-            Choose an option
-          </Text> */}
+          <Image
+            //eslint-disable-next-line
+            source={require('../images/logo.png')}
+            style={logoStyle}
+          />
 
           <TouchableOpacity style={buttonStyle}>
             <Text style={buttonText}>
@@ -49,7 +48,6 @@ export default class MainMenu extends React.Component {
   }
 // }
 
-//eslint-disable-next-line
 const styles = StyleSheet.create({
   container: {
     flex: 2,
@@ -82,5 +80,11 @@ const styles = StyleSheet.create({
   buttonText: {
     padding: 6,
     color: 'black'
+  },
+
+  logoStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1
   }
 });
