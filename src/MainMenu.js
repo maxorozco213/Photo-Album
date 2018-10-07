@@ -9,7 +9,6 @@ export default class MainMenu extends React.Component {
      title: 'Main Menu',
      headerStyle: { backgroundColor: 'white' },
      headerTitleStyle: { color: 'black' },
-     headerSize: { height: 40 } // ??????????
     };
   };
 
@@ -18,13 +17,17 @@ export default class MainMenu extends React.Component {
       buttonText,
       buttonStyle,
       container,
+<<<<<<< HEAD
       mainText,
       subText,
       logoStyle
+=======
+>>>>>>> bcf93dbd32ce7150f0df6febf2ed978e3ed4aa8a
     } = styles;
 
       return (
         <View style={container}>
+<<<<<<< HEAD
           <Image
             //eslint-disable-next-line
             source={require('../images/logo.png')}
@@ -32,12 +35,25 @@ export default class MainMenu extends React.Component {
           />
 
           <TouchableOpacity style={buttonStyle}>
+=======
+          {/* <Image
+            source={'../images/logo.png'}
+          /> */}
+
+          <TouchableOpacity
+            style={buttonStyle}
+            onPress={() => this.props.navigation.navigate('Canvas')}
+          >
+>>>>>>> bcf93dbd32ce7150f0df6febf2ed978e3ed4aa8a
             <Text style={buttonText}>
-              Create a Project
+              {'    '}Create a Project{'    '}
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={buttonStyle}>
+          <TouchableOpacity
+            style={buttonStyle}
+            onPress={() => this.props.navigation.navigate('ProjectGallery')}
+          >
             <Text style={buttonText}>
               View Saved Projects
             </Text>

@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.5.0",
     "react-native": "^0.55.4",
+    "react-native-draggable": "^1.0.14",
     "react-navigation": "^2.16.0"
   },
   "devDependencies": {
