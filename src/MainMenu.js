@@ -17,25 +17,20 @@ export default class MainMenu extends React.Component {
       buttonText,
       buttonStyle,
       container,
-<<<<<<< HEAD
       mainText,
       subText,
       logoStyle
-=======
->>>>>>> bcf93dbd32ce7150f0df6febf2ed978e3ed4aa8a
     } = styles;
 
       return (
         <View style={container}>
-<<<<<<< HEAD
           <Image
             //eslint-disable-next-line
-            source={require('../images/logo.png')}
+            source={require('../images/Splash_Screen.png')}
             style={logoStyle}
           />
 
-          <TouchableOpacity style={buttonStyle}>
-=======
+          {/* <TouchableOpacity style={buttonStyle}> */}
           {/* <Image
             source={'../images/logo.png'}
           /> */}
@@ -44,7 +39,6 @@ export default class MainMenu extends React.Component {
             style={buttonStyle}
             onPress={() => this.props.navigation.navigate('Canvas')}
           >
->>>>>>> bcf93dbd32ce7150f0df6febf2ed978e3ed4aa8a
             <Text style={buttonText}>
               {'    '}Create a Project{'    '}
             </Text>
@@ -62,7 +56,7 @@ export default class MainMenu extends React.Component {
       );
     }
   }
-// }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -101,6 +95,9 @@ const styles = StyleSheet.create({
   logoStyle: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1
+    height: 150,
+    width: 100,
+    marginBottom: 20,
+    borderWidth: 0
   }
 });

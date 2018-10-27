@@ -1,19 +1,3 @@
-//Comes from main menu if saved projects option is chosen
-<<<<<<< HEAD
-
-import React from 'react';
-import { View, Text, Image } from 'react-native';
-
-export default class ProjectGallery extends React.Component {
-  static navigationOptions = ({ navigation, props }) => {
-    return {
-      headerTintColor: 'white',
-      title: 'ProjectGallery',
-      headerStyle: { backgroundColor: 'white' },
-      headerTitleStyle: { color: 'black' },
-      headerSize: { height: 40 } // ??????????
-    };
-=======
 //Should fetch saved project information from the local storage on the device
 //Projects should be opened and displayed to view when selected
 
@@ -30,27 +14,18 @@ export default class ProjectGallery extends React.Component {
      headerStyle: { backgroundColor: 'white' },
      headerTitleStyle: { color: 'black' },
    };
->>>>>>> bcf93dbd32ce7150f0df6febf2ed978e3ed4aa8a
   };
 
   render() {
     return (
-<<<<<<< HEAD
-      <View>
-        <Text>
-          hi
-=======
       <View style={styles.container}>
         <Text>
           More place holder text
->>>>>>> bcf93dbd32ce7150f0df6febf2ed978e3ed4aa8a
         </Text>
       </View>
     );
   }
-<<<<<<< HEAD
-}
-=======
+
 
 }
 
@@ -60,4 +35,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#FCFC79'
   }
 });
->>>>>>> bcf93dbd32ce7150f0df6febf2ed978e3ed4aa8a
