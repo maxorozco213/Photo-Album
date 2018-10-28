@@ -6,11 +6,16 @@ export default class Canvas extends React.Component {
   //eslint-disable-next-line
   static navigationOptions = ({ navigation, screenProps, props }) => {
     return {
-     headerTintColor: 'white',
+     headerTintColor: 'black',
      title: 'Canvas',
      headerStyle: { backgroundColor: 'white' },
      headerTitleStyle: { color: 'black' },
-     headerSize: { height: 40 } // ??????????
+     headerRight:
+      <TouchableOpacity
+        onPress={console.log('press')}
+      > {/*save to gallery */}
+        <Text fontSize={25}>Save</Text>
+      </TouchableOpacity>
     };
   };
 

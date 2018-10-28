@@ -9,10 +9,10 @@ export default class ProjectGallery extends React.Component {
   //eslint-disable-next-line
   static navigationOptions = ({ navigation, screenProps, props }) => {
     return {
-     headerTintColor: 'black',
-     title: 'Project Gallery',
-     headerStyle: { backgroundColor: 'white' },
-     headerTitleStyle: { color: 'black' },
+      headerTintColor: 'black',
+      title: 'Project Gallery',
+      headerStyle: { backgroundColor: 'white' },
+      headerTitleStyle: { color: 'black' },
    };
   };
 
@@ -25,8 +25,6 @@ export default class ProjectGallery extends React.Component {
       </View>
     );
   }
-
-
 }
 
 const styles = StyleSheet.create({

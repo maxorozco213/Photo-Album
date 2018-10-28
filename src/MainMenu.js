@@ -3,9 +3,9 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 export default class MainMenu extends React.Component {
-  static navigationOptions = ({ navigation, props }) => {
+  static navigationOptions = ({ navigation, props, screenProps }) => {
     return {
-     headerTintColor: 'white',
+     headerTintColor: 'black',
      title: 'Main Menu',
      headerStyle: { backgroundColor: 'white' },
      headerTitleStyle: { color: 'black' },
@@ -30,17 +30,12 @@ export default class MainMenu extends React.Component {
             style={logoStyle}
           />
 
-          {/* <TouchableOpacity style={buttonStyle}> */}
-          {/* <Image
-            source={'../images/logo.png'}
-          /> */}
-
           <TouchableOpacity
             style={buttonStyle}
             onPress={() => this.props.navigation.navigate('Canvas')}
           >
             <Text style={buttonText}>
-              {'    '}Create a Project{'    '}
+              {'   '}Create a Project{'   '}
             </Text>
           </TouchableOpacity>
 
@@ -88,15 +83,15 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    padding: 6,
+    margin: 7,
     color: 'black'
   },
 
   logoStyle: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: 150,
-    width: 100,
+    height: 250,
+    width: 150,
     marginBottom: 20,
     borderWidth: 0
   }

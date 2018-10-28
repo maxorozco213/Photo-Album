@@ -3,8 +3,9 @@ import { View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import MainMenu from './Router';
 
+
 const Appnavigator = createStackNavigator({
-  MainMenu: { screen: MainMenu },
+  MainMenu,
 });
 
 const App = () =>
