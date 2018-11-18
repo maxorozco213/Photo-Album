@@ -1,6 +1,7 @@
 // Page on which the user will create projects
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { DynamicCollage } from 'react-native-images-collage';
 
 export default class Canvas extends React.Component {
   //eslint-disable-next-line
@@ -13,8 +14,8 @@ export default class Canvas extends React.Component {
      headerRight:
       <TouchableOpacity
         onPress={console.log('press')}
-      > {/*save to gallery */}
-        <Text fontSize={25}>Save</Text>
+      >
+        <Text>Save{'   '}</Text>
       </TouchableOpacity>
     };
   };
@@ -23,8 +24,12 @@ export default class Canvas extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.canvas}>
-          <Text>Place Holder Text</Text>
-          {/* Pictures will go here */}
+          <DynamicCollage
+            height={'100%'}
+            width={'100%'}
+            images={['/Users/maximilian/react-workspace/photo-album/images/1.png']}
+            matrix={[1]}
+          />
         </View>
 
         <View style={styles.optionBarStyle}>
