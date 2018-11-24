@@ -5,11 +5,13 @@ import { createStackNavigator } from 'react-navigation';
 import MainMenu from './src/MainMenu';
 import Canvas from './src/Canvas';
 import ProjectGallery from './src/ProjectGallery';
+import PickPhotos from './src/PickPhotos';
 
 const NavStack = createStackNavigator({
   MainMenu: { screen: MainMenu },
   Canvas: { screen: Canvas },
-  ProjectGallery: { screen: ProjectGallery }
+  ProjectGallery: { screen: ProjectGallery },
+  PickPhotos: { screen: PickPhotos }
 });
 
 class Router extends Component {

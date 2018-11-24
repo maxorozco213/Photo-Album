@@ -17,8 +17,6 @@ export default class MainMenu extends React.Component {
       buttonText,
       buttonStyle,
       container,
-      mainText,
-      subText,
       logoStyle
     } = styles;
 
@@ -32,7 +30,7 @@ export default class MainMenu extends React.Component {
 
           <TouchableOpacity
             style={buttonStyle}
-            onPress={() => this.props.navigation.navigate('Canvas')}
+            onPress={() => this.props.navigation.navigate('PickPhotos')}
           >
             <Text style={buttonText}>
               {'   '}Create a Project{'   '}
