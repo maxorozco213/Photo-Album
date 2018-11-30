@@ -39,7 +39,7 @@ export default class PickPhotos extends React.Component {
     return (
       <View style={styles.container}>
         {/* needs permissions on device */}
-        {/* if photos do not show then allow app in settings */}
+        {/* if nothing shows then give app storage access permissions */}
         <View style={styles.container}>
           <CameraRollPicker
               groupTypes='Album'

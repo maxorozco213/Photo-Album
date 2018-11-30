@@ -1,8 +1,8 @@
 // Page on which the user will create projects
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, CameraRoll } from 'react-native';
 import { DynamicCollage } from 'react-native-images-collage';
-import ViewShot from 'react-native-view-shot';
+import { captureScreen } from 'react-native-view-shot';
 
 export default class Canvas extends React.Component {
   //eslint-disable-next-line
@@ -13,43 +13,81 @@ export default class Canvas extends React.Component {
      headerStyle: { backgroundColor: 'white' },
      headerTitleStyle: { color: 'black' },
      headerRight:
-      <TouchableOpacity>
+      <TouchableOpacity onPress={this.captureScreenFunction()}>
         <Text style={styles.saveButtonStyle}>Save</Text>
       </TouchableOpacity>
     };
   };
 
-  getURI(photos) {
-    // let photoArray;
-    for (let i = 0; i < photos.length; i++) {
-      return photos[i].uri;
-    }
-
-    // return photoArray;
-    // https://atendesigngroup.com/blog/array-map-filter-and-reduce-js
+  constructor(props) {
+    super(props);
+    this.state = {
+      photoMatrix: [],
+      photoArray: []
+    };
   }
 
-  chooseLayout() {
+  getURI(photos) {
+    const uri = photos.map(p => p.uri);
+    return uri;
+  }
 
+  getHeight(photos) {
+    const height = photos.map(h => h.height);
+    return height;
+  }
+
+  getWidth(photos) {
+    const width = photos.map(w => w.width);
+    return width;
+  }
+
+  getMatrixLayout(photos) {
+    if (photos.length === 4) {
+      this.setState = {
+        photoMatrix: [2, 2]
+      };
+    } else if (photos.length < 4) {
+        this.setState = {
+          photoMatrix: [3]
+        };
+    }
+  }
+
+  captureScreenFunction() {
+    captureScreen({
+        format: 'jpg',
+        quality: 0.8
+    })
+    .then(
+        uri => console.log('Image saved to', uri),
+        error => console.error('Oops, snapshot failed', error)
+    );
   }
 
   render() {
     const photos = this.props.navigation.state.params.selected;
     console.log('PHOTOS', photos);
     console.log('URI', this.getURI(photos));
+    console.log('LENGTH', photos.length);
+    console.log('PHOTO MATRIX', this.getMatrixLayout(photos));
+    console.log('HEIGHT', this.getHeight(photos));
+    console.log('WIDTH', this.getWidth(photos));
     return (
       <View style={styles.container}>
-        <ViewShot
+        <View
           style={styles.canvas}
+          refs='viewShot'
           options={{ format: 'jpg', quality: 0.9 }}
         >
           <DynamicCollage
-              height={'100%'}
-              width={'100%'}
-              images={[this.getURI(photos)]}
-              matrix={[1]}
+              height={500}
+              width={500}
+              images={this.getURI(photos)}
+              matrix={[2, 2]}
+              containerStyle={{ height: '100%', width: '100%' }}
           />
-        </ViewShot>
+        </View>
 
         <View style={styles.optionBarStyle}>
           <View>
@@ -67,7 +105,7 @@ export default class Canvas extends React.Component {
 
           <View>
               {/* Add text */}
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => this.captureScreenFunction()}>
               <Image
                 //eslint-disable-next-line
                 source={require('../images/edit.png')}
@@ -108,7 +146,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 2,
     flexDirection: 'column',
-    backgroundColor: '#FCFC79'
+    // backgroundColor: '#FCFC79'
+    backgroundColor: 'white'
   },
 
   canvas: {
