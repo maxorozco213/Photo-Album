@@ -25,7 +25,7 @@ export default class MainMenu extends React.Component {
         <View style={container}>
           <Image
             //eslint-disable-next-line
-            source={require('../images/Splash_Screen.png')}
+            source={require('../images/mainlogo.png')}
             style={logoStyle}
           />
 

@@ -1,6 +1,6 @@
 // Page on which the user will create projects
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, CameraRoll } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, CameraRoll, ToastAndroid } from 'react-native';
 import { DynamicCollage } from 'react-native-images-collage';
 import { captureScreen } from 'react-native-view-shot';
 
@@ -12,10 +12,10 @@ export default class Canvas extends React.Component {
      title: 'Canvas',
      headerStyle: { backgroundColor: 'white' },
      headerTitleStyle: { color: 'black' },
-     headerRight:
-      <TouchableOpacity onPress={this.captureScreenFunction()}>
-        <Text style={styles.saveButtonStyle}>Save</Text>
-      </TouchableOpacity>
+     // headerRight:
+     //  <TouchableOpacity>
+     //    <Text style={styles.saveButtonStyle}>Save</Text>
+     //  </TouchableOpacity>
     };
   };
 
@@ -23,7 +23,7 @@ export default class Canvas extends React.Component {
     super(props);
     this.state = {
       photoMatrix: [],
-      photoArray: []
+      photoArray: [],
     };
   }
 
@@ -60,7 +60,9 @@ export default class Canvas extends React.Component {
         quality: 0.8
     })
     .then(
-        uri => console.log('Image saved to', uri),
+        uri => CameraRoll.saveToCameraRoll(uri),
+        ToastAndroid.show('Saved', ToastAndroid.SHORT),
+        // uri => console.log('Image saved to', uri),
         error => console.error('Oops, snapshot failed', error)
     );
   }
@@ -97,7 +99,7 @@ export default class Canvas extends React.Component {
             >
               <Image
                 //eslint-disable-next-line
-                source={require('../images/picture.png')}
+                source={require('../images/photos.png')}
                 style={styles.imageStyle}
               />
             </TouchableOpacity>
@@ -108,7 +110,7 @@ export default class Canvas extends React.Component {
             <TouchableOpacity onPress={() => this.captureScreenFunction()}>
               <Image
                 //eslint-disable-next-line
-                source={require('../images/edit.png')}
+                source={require('../images/pencil.png')}
                 style={styles.imageStyle}
               />
             </TouchableOpacity>
@@ -119,7 +121,7 @@ export default class Canvas extends React.Component {
             <TouchableOpacity>
               <Image
                 //eslint-disable-next-line
-                source={require('../images/stars.png')}
+                source={require('../images/effects.png')}
                 style={styles.imageStyle}
               />
             </TouchableOpacity>
@@ -157,7 +159,7 @@ const styles = StyleSheet.create({
   optionBarStyle: {
     flex: 0,
     backgroundColor: 'white',
-    height: 45,
+    height: 60,
     justifyContent: 'space-around',
     flexDirection: 'row',
     borderWidth: 0.5,
