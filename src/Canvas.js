@@ -1,6 +1,6 @@
 // Page on which the user will create projects
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, CameraRoll } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { DynamicCollage } from 'react-native-images-collage';
 import ViewShot from 'react-native-view-shot';
 
@@ -19,7 +19,13 @@ export default class Canvas extends React.Component {
     };
   };
 
-  getURI() {
+  getURI(photos) {
+    // let photoArray;
+    for (let i = 0; i < photos.length; i++) {
+      return photos[i].uri;
+    }
+
+    // return photoArray;
     // https://atendesigngroup.com/blog/array-map-filter-and-reduce-js
   }
 
@@ -29,6 +35,8 @@ export default class Canvas extends React.Component {
 
   render() {
     const photos = this.props.navigation.state.params.selected;
+    console.log('PHOTOS', photos);
+    console.log('URI', this.getURI(photos));
     return (
       <View style={styles.container}>
         <ViewShot
@@ -38,8 +46,8 @@ export default class Canvas extends React.Component {
           <DynamicCollage
               height={'100%'}
               width={'100%'}
-              images={['content://media/external/images/media/71', 'content://media/external/images/media/78', 'content://media/external/images/media/76', 'content://media/external/images/media/77']}
-              matrix={[2, 2]}
+              images={[this.getURI(photos)]}
+              matrix={[1]}
           />
         </ViewShot>
 
@@ -88,8 +96,6 @@ export default class Canvas extends React.Component {
                 style={styles.imageStyle}
               />
             </TouchableOpacity>
-
-          {/* ***** add save button here **** */}
 
           </View>
         </View>

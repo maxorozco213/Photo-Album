@@ -3,6 +3,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 export default class MainMenu extends React.Component {
+  //eslint-disable-next-line
   static navigationOptions = ({ navigation, props, screenProps }) => {
     return {
      headerTintColor: 'black',
