@@ -35,6 +35,10 @@ export default class PickPhotos extends React.Component {
     console.log(this.state.selected);
   }
 
+  async function checkSelected(selected) {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
