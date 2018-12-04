@@ -4,14 +4,14 @@ import { createStackNavigator } from 'react-navigation';
 
 import MainMenu from './src/MainMenu';
 import Canvas from './src/Canvas';
-import ProjectGallery from './src/ProjectGallery';
+import ViewProjectScreen from './src/ViewProjectScreen';
 import PickPhotos from './src/PickPhotos';
 import SaveScreen from './src/SaveScreen';
 
 const NavStack = createStackNavigator({
   MainMenu: { screen: MainMenu },
   Canvas: { screen: Canvas },
-  ProjectGallery: { screen: ProjectGallery },
+  ViewProjectScreen: { screen: ViewProjectScreen },
   PickPhotos: { screen: PickPhotos },
   SaveScreen: { screen: SaveScreen }
 });

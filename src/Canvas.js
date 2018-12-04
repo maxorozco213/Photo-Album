@@ -1,6 +1,6 @@
 // Page on which the user will create projects
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image, Text } from 'react-native';
 import { DynamicCollage } from 'react-native-images-collage';
 import ViewShot from 'react-native-view-shot';
 
@@ -12,15 +12,12 @@ export default class Canvas extends React.Component {
      title: 'Canvas',
      headerStyle: { backgroundColor: 'white' },
      headerTitleStyle: { color: 'black' },
+     headerRight:
+      <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} >
+        <Text style={styles.headerRightStyle}>Main Menu</Text>
+      </TouchableOpacity>
     };
   };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      photoMatrix: [],
-    };
-  }
 
   getURI(photosObject) {
     const uri = photosObject.map(p => p.uri);
@@ -131,17 +128,17 @@ const styles = StyleSheet.create({
   imageStyle: {
     flex: 0,
     resizeMode: 'contain',
-    width: 60,
-    height: 45
+    width: 65,
+    height: 50
   },
 
   imageContainerStyle: {
     flex: 1,
   },
 
-  saveButtonStyle: {
+  headerRightStyle: {
     color: 'black',
     fontSize: 17,
     marginRight: 12
-  }
+  },
 });

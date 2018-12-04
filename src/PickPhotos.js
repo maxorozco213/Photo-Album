@@ -25,7 +25,6 @@ export default class PickPhotos extends React.Component {
 
   getSelectedImages(images, current) {
     const num = images.length;
-
     this.setState({
       num,
       selected: images,
@@ -35,11 +34,46 @@ export default class PickPhotos extends React.Component {
     console.log(this.state.selected);
   }
 
-  async function checkSelected(selected) {
+  selectedMax(isViewScreen) {
+    let selectedMax = null;
 
+    if (isViewScreen) {
+     selectedMax = 1;
+   } else if (!isViewScreen) {
+     selectedMax = 4;
+    }
+
+    return selectedMax;
+  }
+
+  matrixLayout(isViewScreen) {
+    let layout = null;
+
+    if (isViewScreen) {
+     layout = [1];
+   } else if (!isViewScreen) {
+     layout = [2, 2];
+    }
+
+    return layout;
+  }
+
+  checkNavigation(isViewScreen) {
+    let screenName = null;
+
+    if (isViewScreen) {
+      screenName = 'ViewProjectScreen';
+    } else if (!isViewScreen) {
+      screenName = 'Canvas';
+    }
+
+    return screenName;
   }
 
   render() {
+    const isViewScreen = this.props.navigation.state.params.isViewScreen;
+    console.log('BOOL PROP', isViewScreen);
+
     return (
       <View style={styles.container}>
         {/* needs permissions on device */}
@@ -47,7 +81,7 @@ export default class PickPhotos extends React.Component {
         <View style={styles.container}>
           <CameraRollPicker
               groupTypes='Album'
-              maximum={4}
+              maximum={this.selectedMax(isViewScreen)}
               selected={this.state.selected}
               assetType='Photos'
               imagesPerRow={3}
@@ -62,7 +96,7 @@ export default class PickPhotos extends React.Component {
           <TouchableOpacity
             style={styles.buttonStyle}
             onPress={() => this.props.navigation.navigate(
-              'Canvas',
+              this.checkNavigation(isViewScreen),
               { selected: this.state.selected }
             )}
           >

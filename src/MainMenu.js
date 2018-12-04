@@ -31,7 +31,8 @@ export default class MainMenu extends React.Component {
 
           <TouchableOpacity
             style={buttonStyle}
-            onPress={() => this.props.navigation.navigate('PickPhotos')}
+            onPress={() => this.props.navigation.navigate('PickPhotos',
+            { isViewScreen: false })}
           >
             <Text style={buttonText}>
               {'   '}Create a Project{'   '}
@@ -40,7 +41,8 @@ export default class MainMenu extends React.Component {
 
           <TouchableOpacity
             style={buttonStyle}
-            onPress={() => this.props.navigation.navigate('ProjectGallery')}
+            onPress={() => this.props.navigation.navigate('PickPhotos',
+            { isViewScreen: true })}
           >
             <Text style={buttonText}>
               View Saved Projects
