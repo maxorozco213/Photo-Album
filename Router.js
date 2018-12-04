@@ -7,13 +7,15 @@ import Canvas from './src/Canvas';
 import ViewProjectScreen from './src/ViewProjectScreen';
 import PickPhotos from './src/PickPhotos';
 import SaveScreen from './src/SaveScreen';
+import ChooseLayoutScreen from './src/ChooseLayoutScreen';
 
 const NavStack = createStackNavigator({
   MainMenu: { screen: MainMenu },
   Canvas: { screen: Canvas },
   ViewProjectScreen: { screen: ViewProjectScreen },
   PickPhotos: { screen: PickPhotos },
-  SaveScreen: { screen: SaveScreen }
+  SaveScreen: { screen: SaveScreen },
+  ChooseLayoutScreen: { screen: ChooseLayoutScreen }
 });
 
 class Router extends Component {

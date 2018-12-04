@@ -29,25 +29,29 @@ export default class MainMenu extends React.Component {
             style={logoStyle}
           />
 
-          <TouchableOpacity
-            style={buttonStyle}
-            onPress={() => this.props.navigation.navigate('PickPhotos',
-            { isViewScreen: false })}
-          >
-            <Text style={buttonText}>
-              {'   '}Create a Project{'   '}
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={buttonStyle}
+              onPress={() => this.props.navigation.navigate('ChooseLayoutScreen',
+              { isViewScreen: false })}
+            >
+              <Text style={buttonText}>
+                {'   '}Create a Project{'   '}
+              </Text>
+            </TouchableOpacity>
+          </View>
 
-          <TouchableOpacity
-            style={buttonStyle}
-            onPress={() => this.props.navigation.navigate('PickPhotos',
-            { isViewScreen: true })}
-          >
-            <Text style={buttonText}>
-              View Saved Projects
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={buttonStyle}
+              onPress={() => this.props.navigation.navigate('PickPhotos',
+              { isViewScreen: true })}
+            >
+              <Text style={buttonText}>
+                View Saved Projects
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       );
     }
@@ -69,23 +73,41 @@ const styles = StyleSheet.create({
     color: 'black',
   },
 
-  subText: {
-    fontSize: 20,
-    color: 'black',
-    paddingBottom: 10
-  },
-
   buttonStyle: {
-    borderWidth: 2,
-    elevation: 0.5,
+    borderColor: '#e1e105',
     backgroundColor: 'white',
-    borderRadius: 8,
-    marginBottom: 3,
+    width: '90%',
+    justifyContent: 'center',
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 1,
+    height: 40,
+    padding: 15
   },
 
   buttonText: {
-    margin: 7,
-    color: 'black'
+    alignSelf: 'center',
+    color: 'black',
+    fontWeight: 'bold',
+    letterSpacing: 1,
+    padding: 10
+  },
+
+  buttonContainer: {
+    backgroundColor: '#FCFC79',
+    height: 60,
+    width: '70%',
+    borderTopWidth: 0,
+    borderColor: '#CCCCCC',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    left: 0,
+    flex: 0.1,
+    padding: 20
   },
 
   logoStyle: {

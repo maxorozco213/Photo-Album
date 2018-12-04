@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Image,
           Text, CameraRoll, ToastAndroid } from 'react-native';
-import { DynamicCollage } from 'react-native-images-collage';
+import { DynamicCollage, StaticCollage } from 'react-native-images-collage';
 import ViewShot, { captureRef, captureScreen } from 'react-native-view-shot';
 
 export default class Canvas extends React.Component {
@@ -22,6 +22,7 @@ export default class Canvas extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       screenURI: 0,
       previewSource: this.props.navigation.state.params.photos,
@@ -91,6 +92,8 @@ export default class Canvas extends React.Component {
   render() {
     const photos = this.props.navigation.state.params.selected;
     const { navigate } = this.props.navigation;
+    const layoutArray = this.props.navigation.state.params.layoutArray;
+    console.log('LAYOUT', layoutArray);
     console.log('PHOTOS', photos);
     console.log('URI', this.getURI(photos));
     console.log('LENGTH', photos.length);
@@ -103,10 +106,11 @@ export default class Canvas extends React.Component {
           style={styles.canvas}
         >
           <DynamicCollage
-              height={100}
-              width={100}
+              height={1000}
+              width={1000}
               images={this.getURI(photos)}
-              matrix={[2, 2]}
+              imageStyle={styles.photoStyle} // need change?
+              matrix={layoutArray}
               containerStyle={{ height: '100%', width: '100%' }}
           />
         </ViewShot>
@@ -205,4 +209,8 @@ const styles = StyleSheet.create({
     fontSize: 17,
     marginRight: 12
   },
+
+  photoStyle: {
+
+  }
 });

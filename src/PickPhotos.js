@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
 import CameraRollPicker from 'react-native-camera-roll-picker';
 
 export default class PickPhotos extends React.Component {
@@ -10,6 +10,10 @@ export default class PickPhotos extends React.Component {
       title: 'Pick Photos',
       headerStyle: { backgroundColor: 'white' },
       headerTitleStyle: { color: 'black' },
+      headerRight:
+       <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} >
+         <Text style={styles.headerRightStyle}>Main Menu</Text>
+       </TouchableOpacity>
    };
   };
 
@@ -23,6 +27,26 @@ export default class PickPhotos extends React.Component {
     this.getSelectedImages = this.getSelectedImages.bind(this);
   }
 
+  componentDidMount() {
+    const layoutNumber = this.props.navigation.state.params.layoutNumber;
+
+    Alert.alert(
+      'NOTE',
+      //eslint-disable-next-line
+      'Number of photos chosen MUST match the number specified by the button you chose on the previous page (' + layoutNumber + ' photos)',
+      [
+        {
+          text: 'Go back',
+          onPress: () => this.props.navigation.goBack()
+        },
+        {
+          text: 'Ok',
+          style: 'cancel'
+        }
+      ]
+    );
+  }
+
   getSelectedImages(images, current) {
     const num = images.length;
     this.setState({
@@ -30,8 +54,8 @@ export default class PickPhotos extends React.Component {
       selected: images,
     });
 
-    console.log(current);
-    console.log(this.state.selected);
+    console.log('CURRENTLY CHOSEN', current);
+    console.log('SELECTED', this.state.selected);
   }
 
   selectedMax(isViewScreen) {
@@ -70,9 +94,27 @@ export default class PickPhotos extends React.Component {
     return screenName;
   }
 
+  // checkNumberOfPhotos() {
+  //   const photos = this.props.navigation.state.params.photos;
+  //   const layout = this.props.navigation.state.params.layoutArray;
+  //   const layoutSum = layout.reduce(add, 0);
+  //
+  //   function add(a, b) {
+  //       return a + b;
+  //   }
+  //   console.log('LAYOUT SUM', layoutSum);
+  //
+  //   if (photos.length !== layoutSum) {
+  //     return new Promise(isEqual => {
+  //       isEqual('true');
+  //     });
+  //   }
+  // }
+
   render() {
     const isViewScreen = this.props.navigation.state.params.isViewScreen;
-    console.log('BOOL PROP', isViewScreen);
+    const layoutArray = this.props.navigation.state.params.layoutArray;
+    console.log('IS VIEW', isViewScreen);
 
     return (
       <View style={styles.container}>
@@ -97,7 +139,7 @@ export default class PickPhotos extends React.Component {
             style={styles.buttonStyle}
             onPress={() => this.props.navigation.navigate(
               this.checkNavigation(isViewScreen),
-              { selected: this.state.selected }
+              { selected: this.state.selected, layoutArray }
             )}
           >
             <Text style={styles.buttonText}>
@@ -149,10 +191,17 @@ const styles = StyleSheet.create({
     elevation: 1,
     height: 40,
   },
+
   buttonText: {
     alignSelf: 'center',
     color: 'black',
     fontWeight: 'bold',
     letterSpacing: 1,
-  }
+  },
+
+  headerRightStyle: {
+    color: 'black',
+    fontSize: 17,
+    marginRight: 12
+  },
 });
