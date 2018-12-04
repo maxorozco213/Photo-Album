@@ -129,10 +129,11 @@ const styles = StyleSheet.create({
     borderColor: '#CCCCCC',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row',
+    flexDirection: 'column',
     position: 'absolute',
     bottom: 0,
     left: 0,
+    flex: 0.1
   },
 
   buttonStyle: {

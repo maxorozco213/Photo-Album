@@ -12,6 +12,7 @@
     "react-native-camera-roll-picker": "^1.2.3",
     "react-native-draggable": "^1.0.14",
     "react-native-images-collage": "^3.0.3",
+    "react-native-vector-icons": "^6.1.0",
     "react-native-view-shot": "^2.5.0",
     "react-navigation": "^2.16.0"
   },

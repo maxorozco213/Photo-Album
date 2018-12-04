@@ -34,14 +34,10 @@ export default class ViewProjectScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-        <View
-          style={styles.canvas}
-          refs='viewShot'
-          options={{ format: 'jpg', quality: 0.9 }}
-        >
+        <View>
           <StaticCollage
-              height={500}
-              width={500}
+              height={'100%'}
+              width={'100%'}
               images={this.getURI(photos)}
               matrix={[1]}
               containerStyle={{ height: '100%', width: '100%' }}
@@ -90,5 +86,11 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 17,
     marginRight: 12
-  }
+  },
+  
+  headerRightStyle: {
+    color: 'black',
+    fontSize: 17,
+    marginRight: 12
+  },
 });
