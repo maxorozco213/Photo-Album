@@ -25,7 +25,7 @@ export default class Canvas extends React.Component {
 
     this.state = {
       screenURI: 0,
-      previewSource: this.props.navigation.state.params.photos,
+      previewSource: this.props.navigation.state.params.selectedPhotos,
       error: null,
       res: null,
       value: {
@@ -90,25 +90,27 @@ export default class Canvas extends React.Component {
     );
 
   render() {
-    const photos = this.props.navigation.state.params.selected;
+    const selectedPhotos = this.props.navigation.state.params.selectedPhotos;
     const { navigate } = this.props.navigation;
     const layoutArray = this.props.navigation.state.params.layoutArray;
     console.log('LAYOUT', layoutArray);
-    console.log('PHOTOS', photos);
-    console.log('URI', this.getURI(photos));
-    console.log('LENGTH', photos.length);
+    console.log('PHOTOS', selectedPhotos);
+    console.log('URI', this.getURI(selectedPhotos));
+    console.log('LENGTH', selectedPhotos.length);
 
     return (
       <View style={styles.container}>
         <ViewShot
           ref="viewRef"
-          // onCapture={() => this.onCapture}
           style={styles.canvas}
         >
-          <DynamicCollage
+          <StaticCollage
               height={1000}
               width={1000}
-              images={this.getURI(photos)}
+              // height={'100%'}
+              // width={'100%'}
+              direction={'row'}
+              images={this.getURI(selectedPhotos)}
               imageStyle={styles.photoStyle} // need change?
               matrix={layoutArray}
               containerStyle={{ height: '100%', width: '100%' }}
@@ -200,10 +202,6 @@ const styles = StyleSheet.create({
     height: 50
   },
 
-  imageContainerStyle: {
-    flex: 1,
-  },
-
   headerRightStyle: {
     color: 'black',
     fontSize: 17,
@@ -211,6 +209,8 @@ const styles = StyleSheet.create({
   },
 
   photoStyle: {
-
+    height: '100%',
+    width: '100%',
+    resizeMode: 'contain'
   }
 });

@@ -39,6 +39,7 @@ export default class ViewProjectScreen extends React.Component {
               height={'100%'}
               width={'100%'}
               images={this.getURI(photos)}
+              imageStyle={styles.photoStyle}
               matrix={[1]}
               containerStyle={{ height: '100%', width: '100%' }}
           />
@@ -87,10 +88,16 @@ const styles = StyleSheet.create({
     fontSize: 17,
     marginRight: 12
   },
-  
+
   headerRightStyle: {
     color: 'black',
     fontSize: 17,
     marginRight: 12
   },
+
+  photoStyle: {
+    height: '100%',
+    width: '100%',
+    resizeMode: 'contain'
+  }
 });

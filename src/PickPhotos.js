@@ -27,26 +27,6 @@ export default class PickPhotos extends React.Component {
     this.getSelectedImages = this.getSelectedImages.bind(this);
   }
 
-  componentDidMount() {
-    const layoutNumber = this.props.navigation.state.params.layoutNumber;
-
-    Alert.alert(
-      'NOTE',
-      //eslint-disable-next-line
-      'Number of photos chosen MUST match the number specified by the button you chose on the previous page (' + layoutNumber + ' photos)',
-      [
-        {
-          text: 'Go back',
-          onPress: () => this.props.navigation.goBack()
-        },
-        {
-          text: 'Ok',
-          style: 'cancel'
-        }
-      ]
-    );
-  }
-
   getSelectedImages(images, current) {
     const num = images.length;
     this.setState({
@@ -82,34 +62,64 @@ export default class PickPhotos extends React.Component {
     return layout;
   }
 
-  checkNavigation(isViewScreen) {
-    let screenName = null;
+  goToViewScreen(layoutArray) {
+    const photos = this.state.selected;
 
-    if (isViewScreen) {
-      screenName = 'ViewProjectScreen';
-    } else if (!isViewScreen) {
-      screenName = 'Canvas';
-    }
-
-    return screenName;
+    if (photos.length !== 1) {
+      Alert.alert(
+        'NOTE',
+        //eslint-disable-next-line
+        'You must choose ONE photo to view',
+        [
+          {
+            text: 'Ok',
+            style: 'cancel'
+          }
+        ]
+      );
+    } else if (photos.length === 1) {
+       this.props.navigation.navigate('ViewProjectScreen',
+       { selected: this.state.selected, layoutArray });
+     }
   }
 
-  // checkNumberOfPhotos() {
-  //   const photos = this.props.navigation.state.params.photos;
-  //   const layout = this.props.navigation.state.params.layoutArray;
-  //   const layoutSum = layout.reduce(add, 0);
-  //
-  //   function add(a, b) {
-  //       return a + b;
-  //   }
-  //   console.log('LAYOUT SUM', layoutSum);
-  //
-  //   if (photos.length !== layoutSum) {
-  //     return new Promise(isEqual => {
-  //       isEqual('true');
-  //     });
-  //   }
-  // }
+  goToCanvasScreen(layoutArray) {
+    const layoutNumber = this.props.navigation.state.params.layoutNumber;
+    const selectedPhotos = this.state.selected;
+
+    const layoutSum = layoutArray.reduce(add, 0);
+    console.log('LAYOUT SUM', layoutSum);
+
+    function add(a, b) {
+        return a + b;
+    }
+
+    if (selectedPhotos.length === layoutSum) {
+        this.props.navigation.navigate('Canvas',
+        { selectedPhotos: this.state.selected, layoutArray });
+    } else if (selectedPhotos.length !== layoutSum) {
+      Alert.alert(
+        'NOTE',
+        //eslint-disable-next-line
+        'Number of photos chosen MUST match the number specified by the button you chose on the previous page (' + layoutNumber + ' photos)',
+        [
+          {
+            text: 'Ok',
+            style: 'cancel'
+          }
+        ]
+      );
+    }
+  }
+
+  checkNav(isViewScreen, layoutArray) {
+    //reduce function breaks view screen so this method is necessary
+    if (isViewScreen) {
+      this.goToViewScreen(layoutArray);
+    } else if (!isViewScreen) {
+      this.goToCanvasScreen(layoutArray);
+    }
+  }
 
   render() {
     const isViewScreen = this.props.navigation.state.params.isViewScreen;
@@ -137,10 +147,7 @@ export default class PickPhotos extends React.Component {
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.buttonStyle}
-            onPress={() => this.props.navigation.navigate(
-              this.checkNavigation(isViewScreen),
-              { selected: this.state.selected, layoutArray }
-            )}
+            onPress={() => this.checkNav(isViewScreen, layoutArray)}
           >
             <Text style={styles.buttonText}>
               Finish
